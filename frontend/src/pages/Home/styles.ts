@@ -7,6 +7,10 @@ export const Text = styled.h1`
   width: 480px;
 
   margin-top: 15vh;
+
+  @media (max-width: 769px) {
+    font-size: 2.5em;
+  }
 `;
 
 export const Button = styled.span`
@@ -33,7 +37,7 @@ export const Aligned = styled.div`
   display: flex;
   align-items: center;
   img {
-    width: 400px;
+    width: 30vw;
     margin-left: auto;
   }
 `;
