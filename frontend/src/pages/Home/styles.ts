@@ -9,21 +9,23 @@ export const Text = styled.h1`
   margin-top: 15vh;
 `;
 
-export const Button = styled.a`
-  padding: 30px 50px;
-  cursor: pointer;
-  border: 2px solid #444b54;
-  border-radius: 5px;
-  text-decoration: none;
+export const Button = styled.span`
+  a {
+    padding: 30px 50px;
+    cursor: pointer;
+    border: 2px solid #444b54;
+    border-radius: 5px;
+    text-decoration: none;
 
-  font-family: Roboto, sans-serif;
-  font-size: 1.3em;
-  color: #393939;
+    font-family: Roboto, sans-serif;
+    font-size: 1.3em;
+    color: #393939;
 
-  &:hover {
-    background-color: #444b54;
-    color: white;
-    transition: 0.2s;
+    &:hover {
+      background-color: #444b54;
+      color: white;
+      transition: 0.2s;
+    }
   }
 `;
 

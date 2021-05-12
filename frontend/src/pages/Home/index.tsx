@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { TopBar } from '../../components/TopBar';
 
 import gif from '../../assets/coffee.gif';
@@ -12,7 +14,9 @@ const Home: React.FC = () => {
       <TopBar />
       <Text>From coffee lovers to coffee lovers...</Text>
       <Aligned>
-        <Button href="#">I want a coffee</Button>
+        <Button>
+          <Link to="/menu">I want a coffee</Link>
+        </Button>
         <img src={gif} alt="loading..." />
       </Aligned>
     </div>
