@@ -16,28 +16,27 @@ export const Header = styled.div`
 
   border-bottom: 1px solid #444b54;
 
-  span {
+  button {
     margin-right: 1vw;
+    color: #444b54;
+    font-weight: bold;
+    font-family: Rotobo, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: none;
+    cursor: pointer;
 
-    a {
-      color: #444b54;
-      font-weight: bold;
-      font-family: Rotobo, sans-serif;
-      text-transform: uppercase;
-      text-decoration: none;
+    font-size: 0.8em;
 
-      font-size: 0.8em;
+    border: 1px solid #444b54;
+    border-radius: 5px;
+    padding: 10px;
 
-      border: 1px solid #444b54;
-      border-radius: 5px;
-      padding: 10px;
+    &:hover {
+      background-color: #444b54;
+      color: white;
 
-      &:hover {
-        background-color: #444b54;
-        color: white;
-
-        transition: 0.2s;
-      }
+      transition: 0.2s;
     }
   }
 `;
