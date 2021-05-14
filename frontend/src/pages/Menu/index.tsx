@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { TopBar } from '../../components/TopBar';
 import { NavMenu } from '../../components/NavMenu';
@@ -7,10 +7,15 @@ import { Item } from '../../components/Item';
 import { List } from './styles';
 
 import coffee from '../../assets/coffee-cup.png';
+import { AuthContext } from '../../contexts/AuthContext';
+import { LoginModal } from '../../components/LoginModal';
 
 const Menu: React.FC = () => {
+  const { isLoginModalOpen } = useContext(AuthContext);
+
   return (
     <div>
+      {isLoginModalOpen ? <LoginModal /> : null}
       <TopBar />
       <NavMenu />
       <List>

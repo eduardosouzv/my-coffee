@@ -1,12 +1,13 @@
-import React from 'react';
-
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 
 import { Title, Header, Logo } from './styles';
 
 import icon from '../../assets/coffee.svg';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const TopBar: React.FC = () => {
+  const { setIsLoginModalOpen } = useContext(AuthContext);
+
   return (
     <Header>
       <Logo>
@@ -14,9 +15,13 @@ export const TopBar: React.FC = () => {
         <Title>My Coffee</Title>
       </Logo>
 
-      <span>
-        <Link to="/">Login</Link>
-      </span>
+      <button
+        onClick={() => {
+          setIsLoginModalOpen(true);
+        }}
+      >
+        Login
+      </button>
     </Header>
   );
 };

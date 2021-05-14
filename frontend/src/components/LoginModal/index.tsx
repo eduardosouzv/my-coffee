@@ -1,8 +1,12 @@
 import { Overlay, Container, Header, Button, Form } from './styles';
 
 import close from '../../assets/icons/close.svg';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const LoginModal = () => {
+  const { setIsLoginModalOpen } = useContext(AuthContext);
+
   return (
     <>
       <Overlay>
@@ -19,7 +23,11 @@ export const LoginModal = () => {
             </div>
           </Form>
 
-          <Button>
+          <Button
+            onClick={() => {
+              setIsLoginModalOpen(false);
+            }}
+          >
             <img src={close} alt="Fechar modal" />
           </Button>
         </Container>
