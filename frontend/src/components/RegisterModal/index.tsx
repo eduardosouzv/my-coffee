@@ -1,8 +1,14 @@
+import { useContext } from 'react';
+
+import { AuthContext } from '../../contexts/AuthContext';
+
 import { Overlay, Container, Header, Button, Form } from './styles';
 
 import close from '../../assets/icons/close.svg';
 
 export const RegisterModal = () => {
+  const { setIsRegisterModalOpen } = useContext(AuthContext);
+
   return (
     <>
       <Overlay>
@@ -19,7 +25,11 @@ export const RegisterModal = () => {
             </div>
           </Form>
 
-          <Button>
+          <Button
+            onClick={() => {
+              setIsRegisterModalOpen(false);
+            }}
+          >
             <img src={close} alt="Fechar modal" />
           </Button>
         </Container>

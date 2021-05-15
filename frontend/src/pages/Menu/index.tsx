@@ -3,19 +3,21 @@ import React, { useContext } from 'react';
 import { TopBar } from '../../components/TopBar';
 import { NavMenu } from '../../components/NavMenu';
 import { Item } from '../../components/Item';
+import { RegisterModal } from '../../components/RegisterModal';
+import { LoginModal } from '../../components/LoginModal';
 
 import { List } from './styles';
 
 import coffee from '../../assets/coffee-cup.png';
 import { AuthContext } from '../../contexts/AuthContext';
-import { LoginModal } from '../../components/LoginModal';
 
 const Menu: React.FC = () => {
-  const { isLoginModalOpen } = useContext(AuthContext);
+  const { isLoginModalOpen, isRegisterModalOpen } = useContext(AuthContext);
 
   return (
     <div>
       {isLoginModalOpen ? <LoginModal /> : null}
+      {isRegisterModalOpen ? <RegisterModal /> : null}
       <TopBar />
       <NavMenu />
       <List>

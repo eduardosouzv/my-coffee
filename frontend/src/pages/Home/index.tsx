@@ -1,21 +1,23 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import { AuthContext } from '../../contexts/AuthContext';
+
 import { TopBar } from '../../components/TopBar';
 import { LoginModal } from '../../components/LoginModal';
+import { RegisterModal } from '../../components/RegisterModal';
 
 import gif from '../../assets/coffee.gif';
 
 import { Text, Button, Aligned } from './styles';
 
-import { AuthContext } from '../../contexts/AuthContext';
-
 const Home: React.FC = () => {
-  const { isLoginModalOpen } = useContext(AuthContext);
+  const { isLoginModalOpen, isRegisterModalOpen } = useContext(AuthContext);
 
   return (
     <div>
       {isLoginModalOpen ? <LoginModal /> : null}
+      {isRegisterModalOpen ? <RegisterModal /> : null}
       <TopBar />
       <Text>From coffee lovers to coffee lovers...</Text>
       <Aligned>

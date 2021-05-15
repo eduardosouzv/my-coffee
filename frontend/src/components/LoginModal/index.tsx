@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export const LoginModal = () => {
-  const { setIsLoginModalOpen } = useContext(AuthContext);
+  const { setIsLoginModalOpen, setIsRegisterModalOpen } = useContext(AuthContext);
 
   return (
     <>
@@ -18,7 +18,14 @@ export const LoginModal = () => {
             <input id="password" type="password" placeholder="Password" />
 
             <div>
-              <a href="/">Create account</a>
+              <button
+                onClick={() => {
+                  setIsLoginModalOpen(false);
+                  setIsRegisterModalOpen(true);
+                }}
+              >
+                Create account
+              </button>
               <button>Login</button>
             </div>
           </Form>

@@ -66,7 +66,7 @@ export const Form = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    button {
+    button:nth-child(2) {
       background: none;
       cursor: pointer;
       color: #444b54;
@@ -89,9 +89,12 @@ export const Form = styled.div`
       }
     }
 
-    a {
+    button:nth-child(1) {
       color: #393939;
-      text-decoration: none;
+      background: none;
+      border: none;
+      font-family: sans-serif;
+      cursor: pointer;
     }
   }
 `;
