@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import api from '../../config/api';
 
 import { TopBar } from '../../components/TopBar';
 import { NavMenu } from '../../components/NavMenu';
@@ -8,11 +9,29 @@ import { LoginModal } from '../../components/LoginModal';
 
 import { List } from './styles';
 
-import coffee from '../../assets/coffee-cup.png';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const Menu: React.FC = () => {
+  interface IProduct {
+    id: number;
+    title: string;
+    type: string;
+    description: string;
+    price: number;
+    imgUrl: string;
+  }
+
+  useEffect(() => {
+    (async () => {
+      await api.get('/products/all').then(response => {
+        setProducts(response.data);
+      });
+    })();
+  }, []);
+
   const { isLoginModalOpen, isRegisterModalOpen } = useContext(AuthContext);
+
+  const [products, setProducts] = useState([] as Array<IProduct>);
 
   return (
     <div>
@@ -21,26 +40,16 @@ const Menu: React.FC = () => {
       <TopBar />
       <NavMenu />
       <List>
-        <Item
-          title="product"
-          description="lorem ipsum lorem lorem lorem lorem loremlorem ipsum lorem lorem lorem lorem loremlorem ipsum lorem lorem lorem lorem lorem"
-          imgPath={coffee}
-        />
-        <Item
-          title="product"
-          description="lorem ipsum lorem lorem lorem lorem loremlorem ipsum lorem lorem lorem lorem loremlorem ipsum lorem lorem lorem lorem lorem"
-          imgPath={coffee}
-        />
-        <Item
-          title="product"
-          description="lorem ipsum lorem lorem lorem lorem loremlorem ipsum lorem lorem lorem lorem loremlorem ipsum lorem lorem lorem lorem lorem"
-          imgPath={coffee}
-        />
-        <Item
-          title="product"
-          description="lorem ipsum lorem lorem lorem lorem loremlorem ipsum lorem lorem lorem lorem loremlorem ipsum lorem lorem lorem lorem lorem"
-          imgPath={coffee}
-        />
+        {products.map(product => {
+          return (
+            <Item
+              key={product.id}
+              title={product.title}
+              description={product.description}
+              imgPath={product.imgUrl}
+            />
+          );
+        })}
       </List>
     </div>
   );
