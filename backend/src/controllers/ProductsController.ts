@@ -38,4 +38,22 @@ ProductsController.get('/all', (request: Request, response: Response) => {
   }
 });
 
+ProductsController.get('/hot', (request: Request, response: Response) => {
+  try {
+    const products = new ProductsService().getHotCoffes(String(request.get('host')));
+    response.json(products);
+  } catch (error) {
+    response.status(404).json(String(error));
+  }
+});
+
+ProductsController.get('/ice', (request: Request, response: Response) => {
+  try {
+    const products = new ProductsService().getIceCoffes(String(request.get('host')));
+    response.json(products);
+  } catch (error) {
+    response.status(404).json(String(error));
+  }
+});
+
 export default ProductsController;
