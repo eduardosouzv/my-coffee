@@ -40,4 +40,48 @@ export default class ProductsService {
     }
     throw new Error('no registered products');
   }
+
+  getHotCoffes(baseUrl: string) {
+    if (products.length) {
+      const formattedProducts: Array<Product> = [];
+
+      products
+        .filter(product => {
+          return product.type === 'hot';
+        })
+        .map(filteredProduct => {
+          formattedProducts.push(
+            new Product({
+              ...filteredProduct,
+              imgUrl: `http://${baseUrl}/products/photo?id=${filteredProduct.id}`,
+            }),
+          );
+        });
+
+      return formattedProducts;
+    }
+    throw new Error('no registered products');
+  }
+
+  getIceCoffes(baseUrl: string) {
+    if (products.length) {
+      const formattedProducts: Array<Product> = [];
+
+      products
+        .filter(product => {
+          return product.type === 'ice';
+        })
+        .map(filteredProduct => {
+          formattedProducts.push(
+            new Product({
+              ...filteredProduct,
+              imgUrl: `http://${baseUrl}/products/photo?id=${filteredProduct.id}`,
+            }),
+          );
+        });
+
+      return formattedProducts;
+    }
+    throw new Error('no registered products');
+  }
 }
