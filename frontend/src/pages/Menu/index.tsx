@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import api from '../../config/api';
+import React, { useContext } from 'react';
 
 import { TopBar } from '../../components/TopBar';
 import { NavMenu } from '../../components/NavMenu';
@@ -10,28 +9,11 @@ import { LoginModal } from '../../components/LoginModal';
 import { List } from './styles';
 
 import { AuthContext } from '../../contexts/AuthContext';
+import { ProductsContext } from '../../contexts/ProductsContext';
 
 const Menu: React.FC = () => {
-  interface IProduct {
-    id: number;
-    title: string;
-    type: string;
-    description: string;
-    price: number;
-    imgUrl: string;
-  }
-
-  useEffect(() => {
-    (async () => {
-      await api.get('/products/all').then(response => {
-        setProducts(response.data);
-      });
-    })();
-  }, []);
-
   const { isLoginModalOpen, isRegisterModalOpen } = useContext(AuthContext);
-
-  const [products, setProducts] = useState([] as Array<IProduct>);
+  const { products } = useContext(ProductsContext);
 
   return (
     <div>

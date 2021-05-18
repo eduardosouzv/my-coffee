@@ -6,6 +6,7 @@ export const Title = styled.h1`
   font-size: 1.3em;
   text-transform: uppercase;
   padding: 0 0 0 10px;
+  cursor: pointer;
 `;
 
 export const List = styled.ul`
@@ -16,6 +17,7 @@ export const List = styled.ul`
 
   li {
     margin: 0 20px;
+    cursor: pointer;
   }
 
   list-style-type: none;
