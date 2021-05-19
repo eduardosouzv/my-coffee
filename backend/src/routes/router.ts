@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import ProductsController from '../controllers/ProductsController';
+import ProductRouter from './ProductRouter';
 
 const routes = Router();
 
-routes.use('/products', ProductsController);
+routes.use('/products', ProductRouter);
 
 export default routes;
