@@ -1,4 +1,4 @@
-import { Title, Element, Image, Description } from './styles';
+import { Title, Element, Image, Description, Button } from './styles';
 
 interface Props {
   title: string;
@@ -12,6 +12,7 @@ export const Item: React.FC<Props> = ({ title, description, imgPath }) => {
       <Image src={imgPath} />
       <Title>{title}</Title>
       <Description>{description}</Description>
+      <Button>Add to cart</Button>
     </Element>
   );
 };
