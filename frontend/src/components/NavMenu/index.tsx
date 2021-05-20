@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 
-import { Title, List, Menu } from './styles';
+import { List, Menu } from './styles';
 
 import api from '../../config/api';
 
@@ -18,14 +18,14 @@ export const NavMenu = () => {
 
   return (
     <Menu>
-      <Title
-        onClick={() => {
-          getAllProducts();
-        }}
-      >
-        Menu
-      </Title>
       <List>
+        <li
+          onClick={() => {
+            getAllProducts();
+          }}
+        >
+          All Coffees
+        </li>
         <li
           onClick={() => {
             getHotCoffees();

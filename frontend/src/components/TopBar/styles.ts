@@ -28,7 +28,7 @@ export const Header = styled.div`
 
     font-size: 0.8em;
 
-    border: 1px solid #444b54;
+    border: 2px solid #444b54;
     border-radius: 5px;
     padding: 10px;
 
