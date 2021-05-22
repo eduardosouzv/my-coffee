@@ -29,6 +29,7 @@ const Menu: React.FC = () => {
               title={product.title}
               description={product.description}
               imgPath={product.imgUrl}
+              price={product.price}
             />
           );
         })}

@@ -9,10 +9,19 @@ export const Element = styled.div`
   text-align: center;
 
   max-width: 300px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 3vh 3vw;
+  }
 `;
 
 export const Image = styled.img`
   width: 100%;
+  border-radius: 15px;
 `;
 
 export const Description = styled.p`
@@ -23,7 +32,6 @@ export const Description = styled.p`
 
 export const Button = styled.button`
   cursor: pointer;
-  margin-top: 2vh;
   font-family: Roboto, sans-serif;
   font-size: 0.8em;
   color: #393939;
@@ -41,4 +49,10 @@ export const Button = styled.button`
     margin-left: 1vh;
     box-shadow: 0px 1px #444b54;
   }
+`;
+
+export const Price = styled.span`
+  color: #393939;
+  font-family: Roboto, sans-serif;
+  font-size: 1.2em;
 `;
