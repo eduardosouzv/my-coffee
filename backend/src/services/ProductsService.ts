@@ -1,3 +1,5 @@
+import AppError from '../errors/AppError';
+
 import { products } from '../localProducts/products';
 
 import { Product } from '../models/Product';
@@ -7,7 +9,7 @@ export default class ProductsService {
     const found = products.find(item => item.id === receivedID);
 
     if (!found) {
-      throw new Error('product not found');
+      throw new AppError('product not found', 404);
     }
     return new Product({
       ...found,
@@ -19,7 +21,7 @@ export default class ProductsService {
     const found = products.find(item => item.id === receivedID);
 
     if (!found) {
-      throw new Error('image not found');
+      throw new AppError('image not found');
     }
     return found?.icon;
   }
@@ -38,7 +40,7 @@ export default class ProductsService {
       });
       return formattedProducts;
     }
-    throw new Error('no registered products');
+    throw new AppError('no registered products');
   }
 
   getHotCoffes(baseUrl: string) {
@@ -60,7 +62,7 @@ export default class ProductsService {
 
       return formattedProducts;
     }
-    throw new Error('no registered products');
+    throw new AppError('no registered products');
   }
 
   getIceCoffes(baseUrl: string) {
@@ -82,6 +84,6 @@ export default class ProductsService {
 
       return formattedProducts;
     }
-    throw new Error('no registered products');
+    throw new AppError('no registered products');
   }
 }
