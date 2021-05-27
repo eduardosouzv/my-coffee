@@ -1,15 +1,6 @@
 import path from 'path';
 
-interface IProduct {
-  id: number;
-  title: string;
-  type: string;
-  description: string;
-  price: number;
-  icon: string;
-}
-
-export const products: Array<IProduct> = [
+export default [
   {
     id: 1,
     title: 'French Cafe au Lait',
