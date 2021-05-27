@@ -5,10 +5,7 @@ import ProductsService from '../services/ProductsService';
 export const getProductById = (request: Request, response: Response) => {
   const { id } = request.query;
 
-  const product = new ProductsService().getProductById(
-    Number(id),
-    String(request.get('host')),
-  );
+  const product = new ProductsService().getProductById(Number(id));
   response.json(product);
 };
 
@@ -20,16 +17,16 @@ export const getImageById = (request: Request, response: Response) => {
 };
 
 export const getAllProducts = (request: Request, response: Response) => {
-  const product = new ProductsService().getAllProducts(String(request.get('host')));
+  const product = new ProductsService().getAllProducts();
   response.json(product);
 };
 
 export const getHotCoffes = (request: Request, response: Response) => {
-  const products = new ProductsService().getHotCoffes(String(request.get('host')));
+  const products = new ProductsService().getHotCoffes();
   response.json(products);
 };
 
 export const getIceCoffes = (request: Request, response: Response) => {
-  const products = new ProductsService().getIceCoffes(String(request.get('host')));
+  const products = new ProductsService().getIceCoffes();
   response.json(products);
 };

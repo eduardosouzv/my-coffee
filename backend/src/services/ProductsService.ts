@@ -1,11 +1,13 @@
 import AppError from '../errors/AppError';
 
-import { products } from '../localProducts/products';
+import { BASE_URL } from '../constants';
+
+import products from '../localProducts/products';
 
 import { Product } from '../models/Product';
 
 export default class ProductsService {
-  getProductById(receivedID: Number, baseUrl: string) {
+  getProductById(receivedID: Number) {
     const found = products.find(item => item.id === receivedID);
 
     if (!found) {
@@ -13,7 +15,7 @@ export default class ProductsService {
     }
     return new Product({
       ...found,
-      imgUrl: `http://${baseUrl}/products/photo?id=${found.id}`,
+      imgUrl: `${BASE_URL}/products/photo?id=${found.id}`,
     });
   }
 
@@ -26,7 +28,7 @@ export default class ProductsService {
     return found?.icon;
   }
 
-  getAllProducts(baseUrl: string) {
+  getAllProducts() {
     if (products.length) {
       const formattedProducts: Array<Product> = [];
 
@@ -34,7 +36,7 @@ export default class ProductsService {
         formattedProducts.push(
           new Product({
             ...product,
-            imgUrl: `http://${baseUrl}/products/photo?id=${product.id}`,
+            imgUrl: `${BASE_URL}/products/photo?id=${product.id}`,
           }),
         );
       });
@@ -43,7 +45,7 @@ export default class ProductsService {
     throw new AppError('no registered products');
   }
 
-  getHotCoffes(baseUrl: string) {
+  getHotCoffes() {
     if (products.length) {
       const formattedProducts: Array<Product> = [];
 
@@ -55,7 +57,7 @@ export default class ProductsService {
           formattedProducts.push(
             new Product({
               ...filteredProduct,
-              imgUrl: `http://${baseUrl}/products/photo?id=${filteredProduct.id}`,
+              imgUrl: `${BASE_URL}/products/photo?id=${filteredProduct.id}`,
             }),
           );
         });
@@ -65,7 +67,7 @@ export default class ProductsService {
     throw new AppError('no registered products');
   }
 
-  getIceCoffes(baseUrl: string) {
+  getIceCoffes() {
     if (products.length) {
       const formattedProducts: Array<Product> = [];
 
@@ -77,7 +79,7 @@ export default class ProductsService {
           formattedProducts.push(
             new Product({
               ...filteredProduct,
-              imgUrl: `http://${baseUrl}/products/photo?id=${filteredProduct.id}`,
+              imgUrl: `${BASE_URL}/products/photo?id=${filteredProduct.id}`,
             }),
           );
         });
