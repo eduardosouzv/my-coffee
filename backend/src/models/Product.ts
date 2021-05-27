@@ -1,11 +1,4 @@
-interface IProduct {
-  id: number;
-  title: string;
-  type: string;
-  description: string;
-  price: number;
-  imgUrl: string;
-}
+import { IProduct } from '../interfaces/Product.interface';
 
 export class Product {
   constructor({ id, title, type, description, price, imgUrl }: IProduct) {
