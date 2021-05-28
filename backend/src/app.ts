@@ -1,6 +1,8 @@
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 
+import './database';
+
 import AppError from './errors/AppError';
 
 import routes from './routes/router';
