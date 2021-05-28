@@ -36,15 +36,15 @@ const mockProducts = [
   },
 ];
 
-jest.mock('../src/localProducts/products', () => {
+jest.mock('../localProducts/products', () => {
   return mockProducts;
 });
 
-import ProductsService from '../src/services/ProductsService';
+import ProductsService from '../services/ProductsService';
 
-import { Product } from '../src/models/Product';
+import { Product } from '../models/Product';
 
-import { BASE_URL } from '../src/constants';
+import { BASE_URL } from '../../constants';
 
 describe('Products Service', () => {
   it('should return a product from id 1', () => {
