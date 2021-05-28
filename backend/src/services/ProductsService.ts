@@ -1,6 +1,6 @@
 import AppError from '../errors/AppError';
 
-import { BASE_URL } from '../constants';
+import { BASE_URL } from '../../constants';
 
 import products from '../localProducts/products';
 
