@@ -7,6 +7,7 @@ export default {
   username: DB_USER.user,
   password: DB_USER.password,
   database: 'mycoffee',
+  entities: [__dirname + '/src/models/*.ts'],
   migrations: ['./src/database/migrations/*.ts'],
   cli: {
     migrationsDir: './src/database/migrations',
