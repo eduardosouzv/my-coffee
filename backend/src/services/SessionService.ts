@@ -4,7 +4,7 @@ import { getCustomRepository } from 'typeorm';
 import User from '../models/User';
 
 import { sign } from 'jsonwebtoken';
-import { JWT_SECRET } from '../../constants';
+import { JWT } from '../../constants';
 
 import { compare } from 'bcryptjs';
 
@@ -34,9 +34,9 @@ export default class SessionService {
       throw new AppError('incorrect email/password');
     }
 
-    const token = sign({}, JWT_SECRET, {
+    const token = sign({}, JWT.SECRET, {
       subject: userFound.id,
-      expiresIn: '1d',
+      expiresIn: JWT.EXPIRES_IN,
     });
 
     return {
