@@ -43,12 +43,6 @@ export const Button = styled.button`
   border: 2px solid #444b54;
   box-shadow: 2px 3px #444b54;
   border-radius: 5px;
-
-  &:active {
-    margin-top: 2.7vh;
-    margin-left: 1vh;
-    box-shadow: 0px 1px #444b54;
-  }
 `;
 
 export const Price = styled.span`
