@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import UserService from '../services/UserService';
 import asyncHandler from 'express-async-handler';
 
-export const createUser = asyncHandler(
+export const registerUser = asyncHandler(
   async (request: Request, response: Response, next: NextFunction) => {
     const { user, password } = request.body;
 
