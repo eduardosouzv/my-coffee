@@ -1,11 +1,26 @@
 import { Overlay, Container, Header, Button, Form } from './styles';
 
 import close from '../../assets/icons/close.svg';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 
+interface IUserCredentials {
+  username: string;
+  password: string;
+}
+
 export const LoginModal = () => {
-  const { setIsLoginModalOpen, setIsRegisterModalOpen } = useContext(AuthContext);
+  const { setIsLoginModalOpen, setIsRegisterModalOpen, login, wrongCredentialsMessage } =
+    useContext(AuthContext);
+  const userInput = useRef<HTMLInputElement>(null);
+  const passwordInput = useRef<HTMLInputElement>(null);
+
+  function handleSubmit() {
+    const username = userInput.current?.value;
+    const password = passwordInput.current?.value;
+
+    login({ username, password } as IUserCredentials);
+  }
 
   return (
     <>
@@ -13,9 +28,12 @@ export const LoginModal = () => {
         <Container>
           <Header>Welcome</Header>
           <Form>
-            <input id="name" type="text" placeholder="User" />
+            {wrongCredentialsMessage ? (
+              <p style={{ color: 'red' }}>incorrect email/password</p>
+            ) : null}
+            <input ref={userInput} type="text" placeholder="User" />
 
-            <input id="password" type="password" placeholder="Password" />
+            <input ref={passwordInput} type="password" placeholder="Password" />
 
             <div>
               <button
@@ -26,7 +44,13 @@ export const LoginModal = () => {
               >
                 Create account
               </button>
-              <button>Login</button>
+              <button
+                onClick={() => {
+                  handleSubmit();
+                }}
+              >
+                Login
+              </button>
             </div>
           </Form>
 
