@@ -6,8 +6,7 @@ import icon from '../../assets/coffee.svg';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export const TopBar: React.FC = () => {
-  const { setIsLoginModalOpen } = useContext(AuthContext);
-
+  const { setIsLoginModalOpen, logout, isLogged } = useContext(AuthContext);
   return (
     <Header>
       <Logo>
@@ -15,13 +14,23 @@ export const TopBar: React.FC = () => {
         <Title>My Coffee</Title>
       </Logo>
 
-      <button
-        onClick={() => {
-          setIsLoginModalOpen(true);
-        }}
-      >
-        Login
-      </button>
+      {isLogged ? (
+        <button
+          onClick={() => {
+            logout();
+          }}
+        >
+          Logout
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            setIsLoginModalOpen(true);
+          }}
+        >
+          Login
+        </button>
+      )}
     </Header>
   );
 };
