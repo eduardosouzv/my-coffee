@@ -10,8 +10,12 @@ interface IUserCredentials {
 }
 
 export const LoginModal = () => {
-  const { setIsLoginModalOpen, setIsRegisterModalOpen, login, wrongCredentialsMessage } =
-    useContext(AuthContext);
+  const {
+    setIsLoginModalOpen,
+    setIsRegisterModalOpen,
+    login,
+    loginCredentialsWarningStatus,
+  } = useContext(AuthContext);
   const userInput = useRef<HTMLInputElement>(null);
   const passwordInput = useRef<HTMLInputElement>(null);
 
@@ -28,8 +32,8 @@ export const LoginModal = () => {
         <Container>
           <Header>Welcome</Header>
           <Form>
-            {wrongCredentialsMessage ? (
-              <p style={{ color: 'red' }}>incorrect email/password</p>
+            {loginCredentialsWarningStatus.active ? (
+              <p style={{ color: 'red' }}>{loginCredentialsWarningStatus.message}</p>
             ) : null}
             <input ref={userInput} type="text" placeholder="User" />
 
