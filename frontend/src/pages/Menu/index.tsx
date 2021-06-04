@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { TopBar } from '../../components/TopBar';
 import { NavMenu } from '../../components/NavMenu';
@@ -12,8 +12,12 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { ProductsContext } from '../../contexts/ProductsContext';
 
 const Menu: React.FC = () => {
-  const { isLoginModalOpen, isRegisterModalOpen } = useContext(AuthContext);
+  const { isLoginModalOpen, isRegisterModalOpen, verifyJWT } = useContext(AuthContext);
   const { products } = useContext(ProductsContext);
+
+  useEffect(() => {
+    verifyJWT();
+  }, [verifyJWT]);
 
   return (
     <div>
