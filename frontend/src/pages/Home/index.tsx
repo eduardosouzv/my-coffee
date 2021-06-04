@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/AuthContext';
@@ -12,11 +12,7 @@ import gif from '../../assets/coffee.gif';
 import { Text, Button, Aligned } from './styles';
 
 const Home: React.FC = () => {
-  const { isLoginModalOpen, isRegisterModalOpen, verifyJWT } = useContext(AuthContext);
-
-  useEffect(() => {
-    verifyJWT();
-  }, [verifyJWT]);
+  const { isLoginModalOpen, isRegisterModalOpen } = useContext(AuthContext);
 
   return (
     <div>
