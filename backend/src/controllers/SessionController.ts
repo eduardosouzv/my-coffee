@@ -12,9 +12,18 @@ export const createSession = asyncHandler(
         password,
       });
 
+      delete userCredentials.password;
+
       response.json(userCredentials);
     } catch (err) {
       next(err);
     }
   },
 );
+
+export const verifyToken = (request: Request, response: Response) => {
+  const { token } = request.body;
+
+  const validatedToken = new SessionService().verifyToken(token);
+  response.json(validatedToken);
+};

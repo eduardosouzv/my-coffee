@@ -1,9 +1,7 @@
 import UserRepository from '../repositories/UsersRepository';
 import { getCustomRepository } from 'typeorm';
 
-import User from '../models/User';
-
-import { sign } from 'jsonwebtoken';
+import { sign, verify } from 'jsonwebtoken';
 import { JWT } from '../../constants';
 
 import { compare } from 'bcryptjs';
@@ -15,11 +13,15 @@ interface Request {
   password: string;
 }
 
+interface UserWithToken {
+  id: string;
+  user: string;
+  password?: string;
+  token: string;
+}
+
 export default class SessionService {
-  async authenticateUser({
-    user,
-    password,
-  }: Request): Promise<{ user: User; token: string }> {
+  async authenticateUser({ user, password }: Request): Promise<UserWithToken> {
     const repository = getCustomRepository(UserRepository);
 
     const userFound = await repository.findOne({ where: { user } });
@@ -39,9 +41,20 @@ export default class SessionService {
       expiresIn: JWT.EXPIRES_IN,
     });
 
-    return {
-      user: userFound,
-      token: token,
+    const userObjectWithToken: UserWithToken = {
+      ...userFound,
+      token,
     };
+
+    return userObjectWithToken;
+  }
+
+  verifyToken(token: string) {
+    try {
+      var decoded = verify(token, JWT.SECRET);
+      return decoded;
+    } catch (err) {
+      throw new AppError('invalid token', 401);
+    }
   }
 }
