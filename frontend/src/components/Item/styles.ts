@@ -3,19 +3,23 @@ import styled from 'styled-components';
 export const Title = styled.h1`
   font-family: Roboto, sans-serif;
   color: #393939;
+  font-size: 1.4em;
 `;
 
 export const Element = styled.div`
   text-align: center;
-
-  max-width: 300px;
+  max-width: 250px;
+  margin: 0.8em 1.3em;
 
   div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin: 3vh 3vw;
+    padding: 0.7em;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 `;
 
@@ -41,8 +45,14 @@ export const Button = styled.button`
   padding: 10px;
 
   border: 2px solid #444b54;
-  box-shadow: 2px 3px #444b54;
   border-radius: 5px;
+
+  &:hover {
+    background-color: #444b54;
+    color: white;
+
+    transition: 0.5s;
+  }
 `;
 
 export const Price = styled.span`

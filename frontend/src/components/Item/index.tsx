@@ -10,12 +10,14 @@ interface Props {
 export const Item: React.FC<Props> = ({ title, description, imgPath, price }) => {
   return (
     <Element>
-      <Image src={imgPath} />
-      <Title>{title}</Title>
-      <Description>{description}</Description>
       <div>
-        <Price>$ {price}</Price>
-        <Button>Add to cart</Button>
+        <Image src={imgPath} />
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+        <div>
+          <Price>$ {price}</Price>
+          <Button>Add to cart</Button>
+        </div>
       </div>
     </Element>
   );
