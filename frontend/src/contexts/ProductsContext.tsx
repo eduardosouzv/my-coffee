@@ -29,19 +29,19 @@ export const ProductsProvider = ({ children }: ProviderProps) => {
   const [products, setProducts] = useState([] as Array<IProduct>);
 
   const getAllProducts = () => {
-    api.get('/products/all').then(response => {
+    api.get<Array<IProduct>>('/products/all').then(response => {
       setProducts(response.data);
     });
   };
 
   const getHotCoffees = () => {
-    api.get('/products/hot').then(response => {
+    api.get<Array<IProduct>>('/products/hot').then(response => {
       setProducts(response.data);
     });
   };
 
   const getIceCoffees = () => {
-    api.get('/products/ice').then(response => {
+    api.get<Array<IProduct>>('/products/ice').then(response => {
       setProducts(response.data);
     });
   };
