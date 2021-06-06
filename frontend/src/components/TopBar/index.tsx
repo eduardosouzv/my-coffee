@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 
-import { Title, Header, Logo } from './styles';
+import { Title, Header, Logo, Cart } from './styles';
 
 import icon from '../../assets/coffee.svg';
+
+import cartIcon from '../../assets/icons/cart.svg';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export const TopBar: React.FC = () => {
@@ -14,23 +16,30 @@ export const TopBar: React.FC = () => {
         <Title>My Coffee</Title>
       </Logo>
 
-      {isLogged ? (
-        <button
-          onClick={() => {
-            logout();
-          }}
-        >
-          Logout
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            setIsLoginModalOpen(true);
-          }}
-        >
-          Login
-        </button>
-      )}
+      <div>
+        {isLogged ? (
+          <>
+            <Cart>
+              <img src={cartIcon} alt="" />
+            </Cart>
+            <button
+              onClick={() => {
+                logout();
+              }}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={() => {
+              setIsLoginModalOpen(true);
+            }}
+          >
+            Login
+          </button>
+        )}
+      </div>
     </Header>
   );
 };

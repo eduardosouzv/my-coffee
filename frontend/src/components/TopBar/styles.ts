@@ -16,27 +16,32 @@ export const Header = styled.div`
 
   border-bottom: 1px solid #444b54;
 
-  button {
-    margin-right: 1vw;
-    color: #444b54;
-    font-weight: bold;
-    font-family: Rotobo, sans-serif;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: none;
-    cursor: pointer;
+  div {
+    display: flex;
+    align-items: center;
 
-    font-size: 0.8em;
+    button:last-child {
+      margin-right: 1vw;
+      color: #444b54;
+      font-weight: bold;
+      font-family: Rotobo, sans-serif;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: none;
+      cursor: pointer;
 
-    border: 2px solid #444b54;
-    border-radius: 5px;
-    padding: 10px;
+      font-size: 0.8em;
 
-    &:hover {
-      background-color: #444b54;
-      color: white;
+      border: 2px solid #444b54;
+      border-radius: 5px;
+      padding: 10px;
 
-      transition: 0.2s;
+      &:hover {
+        background-color: #444b54;
+        color: white;
+
+        transition: 0.2s;
+      }
     }
   }
 `;
@@ -49,4 +54,24 @@ export const Logo = styled.div`
 
   display: flex;
   align-items: center;
+`;
+
+export const Cart = styled.button`
+  cursor: pointer;
+
+  border: none;
+  background: none;
+
+  margin-right: 2.3vw;
+  align-items: center;
+  padding: 0 2px 0 0;
+
+  &:hover {
+    border-bottom: 5px solid #f9ffa6;
+    transition: 0.1s;
+  }
+
+  img {
+    width: 1.7em;
+  }
 `;
