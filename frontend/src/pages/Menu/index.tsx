@@ -25,6 +25,7 @@ const Menu: React.FC = () => {
         {products.map(product => {
           return (
             <Item
+              id={product.id}
               key={product.id}
               title={product.title}
               description={product.description}
