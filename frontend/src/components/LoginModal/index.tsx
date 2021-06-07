@@ -1,7 +1,7 @@
 import { Overlay, Container, Header, Button, Form } from './styles';
 
 import close from '../../assets/icons/close.svg';
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 
 interface IUserCredentials {
@@ -25,6 +25,10 @@ export const LoginModal = () => {
 
     login({ username, password } as IUserCredentials);
   }
+
+  useEffect(() => {
+    userInput.current?.focus();
+  }, []);
 
   return (
     <>

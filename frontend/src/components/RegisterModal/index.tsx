@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -26,6 +26,10 @@ export const RegisterModal = () => {
 
     register({ username, password, repeat } as IRegisterCredentials);
   }
+
+  useEffect(() => {
+    usernameInput.current?.focus();
+  }, []);
 
   return (
     <>
