@@ -6,9 +6,11 @@ import icon from '../../assets/coffee.svg';
 
 import cartIcon from '../../assets/icons/cart.svg';
 import { AuthContext } from '../../contexts/AuthContext';
+import { CartContext } from '../../contexts/CartContext';
 
 export const TopBar: React.FC = () => {
   const { setIsLoginModalOpen, logout, isLogged } = useContext(AuthContext);
+  const { setIsCartModalOpen } = useContext(CartContext);
   return (
     <Header>
       <Logo>
@@ -19,7 +21,11 @@ export const TopBar: React.FC = () => {
       <div>
         {isLogged ? (
           <>
-            <Cart>
+            <Cart
+              onClick={() => {
+                setIsCartModalOpen(true);
+              }}
+            >
               <img src={cartIcon} alt="" />
             </Cart>
             <button
