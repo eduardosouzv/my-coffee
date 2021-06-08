@@ -82,12 +82,16 @@ export const ActionButton = styled.button`
   display: flex;
   align-items: center;
 
-  margin: 0 0.5em;
-
   border: none;
   background: none;
 
+  padding: 10px;
+
   cursor: pointer;
+
+  &:last-child {
+    padding: 15px 10px;
+  }
 `;
 
 export const End = styled.div`
@@ -108,4 +112,11 @@ export const CloseModal = styled.button`
   border: none;
 
   cursor: pointer;
+`;
+
+export const EmptyMessage = styled.h1`
+  margin-top: 3em;
+
+  font-family: sans-serif;
+  color: #d9d9d9;
 `;

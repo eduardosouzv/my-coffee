@@ -6,10 +6,18 @@ import { Item, ItemIcon, End, ActionButton } from './styles';
 interface Props {
   icon: string;
   title: string;
-  quantity: string;
+  quantity: number;
+  addFunction: any;
+  removeFunction: () => void;
 }
 
-export const ItemComponent: React.FC<Props> = ({ icon, title, quantity }) => {
+export const ItemComponent: React.FC<Props> = ({
+  icon,
+  title,
+  quantity,
+  addFunction,
+  removeFunction,
+}) => {
   return (
     <>
       <Item>
@@ -19,10 +27,10 @@ export const ItemComponent: React.FC<Props> = ({ icon, title, quantity }) => {
           <p>
             <strong>Quantity:</strong> {quantity}
           </p>
-          <ActionButton>
+          <ActionButton onClick={addFunction}>
             <img src={add} />
           </ActionButton>
-          <ActionButton>
+          <ActionButton onClick={removeFunction}>
             <img src={remove} />
           </ActionButton>
         </End>
