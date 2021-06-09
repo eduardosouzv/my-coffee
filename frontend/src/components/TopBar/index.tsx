@@ -19,15 +19,15 @@ export const TopBar: React.FC = () => {
       </Logo>
 
       <div>
+        <Cart
+          onClick={() => {
+            setIsCartModalOpen(true);
+          }}
+        >
+          <img src={cartIcon} alt="" />
+        </Cart>
         {isLogged ? (
           <>
-            <Cart
-              onClick={() => {
-                setIsCartModalOpen(true);
-              }}
-            >
-              <img src={cartIcon} alt="" />
-            </Cart>
             <button
               onClick={() => {
                 logout();
