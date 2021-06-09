@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 
 import close from '../../assets/icons/close.svg';
 
-import { Overlay, Container, Header, CloseModal, EmptyMessage } from './styles';
+import { Overlay, Container, Header, CloseModal, EmptyMessage, Footer } from './styles';
 
 import { ItemComponent } from './ItemComponent';
 
@@ -19,7 +19,20 @@ interface ICart {
 
 export const CartModal: React.FC = () => {
   const { setIsCartModalOpen } = useContext(CartContext);
+  const [balance, setBalance] = useState<string>(() => {
+    const cartJSON = localStorage.getItem('cart');
 
+    if (cartJSON) {
+      const cart: ICart[] = JSON.parse(cartJSON);
+
+      let currentBalance = 0;
+
+      cart.map(item => (currentBalance += item.quantity * item.price));
+      return currentBalance.toFixed(2);
+    }
+
+    return '0.00';
+  });
   const [localStorageCart, setLocalStorageCart] = useState<ICart[]>(() => {
     const cartJSON = localStorage.getItem('cart');
 
@@ -29,6 +42,14 @@ export const CartModal: React.FC = () => {
 
     return [];
   });
+
+  function refreshBalance(cart: ICart[]) {
+    let currentBalance = 0;
+
+    cart.map(item => (currentBalance += item.quantity * item.price));
+
+    setBalance(currentBalance.toFixed(2));
+  }
 
   function addOneProduct(id: number, type: 'add' | 'remove'): void {
     const index = localStorageCart.findIndex(storageItem => storageItem.id === id);
@@ -44,6 +65,7 @@ export const CartModal: React.FC = () => {
       if (localStorageCart[index].quantity === 1) {
         newCart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify([...newCart]));
+        refreshBalance([...newCart]);
         setLocalStorageCart([...newCart]);
         return;
       }
@@ -56,6 +78,7 @@ export const CartModal: React.FC = () => {
     }
 
     localStorage.setItem('cart', JSON.stringify([...newCart]));
+    refreshBalance([...newCart]);
     setLocalStorageCart([...newCart]);
   }
 
@@ -95,6 +118,10 @@ export const CartModal: React.FC = () => {
           ) : (
             <EmptyMessage>empty</EmptyMessage>
           )}
+
+          <Footer>
+            <p>Your balance $ {balance}</p>
+          </Footer>
         </Container>
       </Overlay>
     </>

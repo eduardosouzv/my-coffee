@@ -15,14 +15,16 @@ export const Overlay = styled.div`
 
 export const Container = styled.div`
   background: white;
-  width: 100%;
-  max-width: 800px;
-  padding: 2rem 3rem;
-  border-radius: 5px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  position: relative;
+  border-radius: 5px;
+
+  max-width: 800px;
+  width: 100%;
+  padding: 2rem 3rem;
+
   overflow: auto;
+
+  position: relative;
   height: 500px;
 `;
 
@@ -119,4 +121,28 @@ export const EmptyMessage = styled.h1`
 
   font-family: sans-serif;
   color: #d9d9d9;
+`;
+
+export const Footer = styled.div`
+  display: flex;
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 8vh;
+
+  background-color: #444b54;
+  color: white;
+
+  p {
+    display: flex;
+    align-items: center;
+
+    font-family: Rotobo, sans-serif;
+    font-size: 1.3em;
+
+    margin: 0.5em;
+  }
 `;
