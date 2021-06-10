@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Overlay = styled.div`
   background: rgba(242, 243, 245, 0.8);
+
   position: fixed;
   top: 0;
   bottom: 0;
@@ -14,6 +15,9 @@ export const Overlay = styled.div`
 `;
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
   background: white;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
@@ -30,36 +34,35 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
 
   font-size: 3em;
   margin: 3vh;
   font-weight: 600;
   color: #393939;
   font-family: Roboto, sans-serif;
+`;
 
-  button {
-    background: none;
-    cursor: pointer;
+export const CheckoutButton = styled.button`
+  background: none;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  font-family: Rotobo, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  height: 4em;
+
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+
+  &:hover {
+    background-color: white;
     color: #444b54;
-    font-weight: bold;
-    font-family: Rotobo, sans-serif;
-    text-transform: uppercase;
-    text-decoration: none;
 
-    height: 4em;
-
-    border: 1px solid #444b54;
-    border-radius: 5px;
-    padding: 10px;
-
-    &:hover {
-      background-color: #444b54;
-      color: white;
-
-      transition: 0.2s;
-    }
+    transition: 0.2s;
   }
 `;
 
@@ -117,14 +120,16 @@ export const CloseModal = styled.button`
 `;
 
 export const EmptyMessage = styled.h1`
-  margin-top: 3em;
-
+  margin: 3em auto;
   font-family: sans-serif;
   color: #d9d9d9;
 `;
 
 export const Footer = styled.div`
   display: flex;
+
+  justify-content: space-around;
+  align-items: center;
 
   position: absolute;
   left: 0;
@@ -136,13 +141,15 @@ export const Footer = styled.div`
   background-color: #444b54;
   color: white;
 
+  padding: 6px;
+
+  box-sizing: border-box;
+
   p {
     display: flex;
     align-items: center;
 
     font-family: Rotobo, sans-serif;
     font-size: 1.3em;
-
-    margin: 0.5em;
   }
 `;

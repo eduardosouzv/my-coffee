@@ -2,7 +2,15 @@ import { useContext, useState } from 'react';
 
 import close from '../../assets/icons/close.svg';
 
-import { Overlay, Container, Header, CloseModal, EmptyMessage, Footer } from './styles';
+import {
+  Overlay,
+  Container,
+  Header,
+  CloseModal,
+  EmptyMessage,
+  Footer,
+  CheckoutButton,
+} from './styles';
 
 import { ItemComponent } from './ItemComponent';
 
@@ -95,7 +103,6 @@ export const CartModal: React.FC = () => {
           </CloseModal>
           <Header>
             <p>Your Cart</p>
-            <button>Checkout</button>
           </Header>
 
           {localStorageCart.length ? (
@@ -121,6 +128,7 @@ export const CartModal: React.FC = () => {
 
           <Footer>
             <p>Your balance $ {balance}</p>
+            <CheckoutButton>Checkout</CheckoutButton>
           </Footer>
         </Container>
       </Overlay>
