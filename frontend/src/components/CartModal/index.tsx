@@ -15,6 +15,7 @@ import {
 import { ItemComponent } from './ItemComponent';
 
 import { CartContext } from '../../contexts/CartContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 interface ICart {
   id: number;
@@ -27,6 +28,8 @@ interface ICart {
 
 export const CartModal: React.FC = () => {
   const { setIsCartModalOpen } = useContext(CartContext);
+  const { isLogged, setIsLoginModalOpen } = useContext(AuthContext);
+
   const [balance, setBalance] = useState<string>(() => {
     const cartJSON = localStorage.getItem('cart');
 
@@ -90,6 +93,15 @@ export const CartModal: React.FC = () => {
     setLocalStorageCart([...newCart]);
   }
 
+  function handleCheckout() {
+    if (isLogged) {
+      // go to checkout
+      return;
+    }
+    setIsCartModalOpen(false);
+    setIsLoginModalOpen(true);
+  }
+
   return (
     <>
       <Overlay>
@@ -128,7 +140,13 @@ export const CartModal: React.FC = () => {
 
           <Footer>
             <p>Your balance $ {balance}</p>
-            <CheckoutButton>Checkout</CheckoutButton>
+            <CheckoutButton
+              onClick={() => {
+                handleCheckout();
+              }}
+            >
+              Checkout
+            </CheckoutButton>
           </Footer>
         </Container>
       </Overlay>
