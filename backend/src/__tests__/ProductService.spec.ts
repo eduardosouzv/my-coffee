@@ -45,6 +45,7 @@ import ProductsService from '../services/ProductsService';
 import { Product } from '../models/Product';
 
 import { BASE_URL } from '../../constants';
+import AppError from '../errors/AppError';
 
 describe('Products Service', () => {
   it('should return a product from id 1', () => {
@@ -152,5 +153,14 @@ describe('Products Service', () => {
         imgUrl: `${BASE_URL}/products/photo?id=4`,
       },
     ]);
+  });
+
+  it('should return a product not found error', () => {
+    try {
+      new ProductsService().getProductById(777);
+    } catch (error) {
+      expect(error).toBeInstanceOf(AppError);
+      expect(error).toHaveProperty('message', 'product not found');
+    }
   });
 });
