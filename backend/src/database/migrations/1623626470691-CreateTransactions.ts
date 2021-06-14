@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
 export class CreateTransactions1623626470691 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -23,13 +23,17 @@ export class CreateTransactions1623626470691 implements MigrationInterface {
             type: 'varchar',
           },
         ],
-        foreignKeys: [
-          {
-            columnNames: ['users_id'],
-            referencedColumnNames: ['id'],
-            referencedTableName: 'users',
-          },
-        ],
+      }),
+    );
+
+    await queryRunner.createForeignKey(
+      'transactions',
+      new TableForeignKey({
+        columnNames: ['users_id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'users',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
       }),
     );
   }
