@@ -15,6 +15,7 @@ export const PrivateRoute = ({ component: Component, ...rest }: Props) => {
       setIsAuthenticated(true);
       setLoading(false);
     }
+    setLoading(false);
   }, []);
 
   if (loading) {
@@ -28,7 +29,7 @@ export const PrivateRoute = ({ component: Component, ...rest }: Props) => {
         if (isAuthenticated) {
           return <Component {...props} />;
         } else {
-          return <Redirect to={{ pathname: '/' }} />;
+          return <Redirect to="/" />;
         }
       }}
     />
