@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Redirect, Route, RouteProps } from 'react-router';
+import { Loading } from '../components/Loading';
 
 interface Props extends RouteProps {
   component: any;
@@ -19,7 +20,7 @@ export const PrivateRoute = ({ component: Component, ...rest }: Props) => {
   }, []);
 
   if (loading) {
-    return <h1>Loading</h1>;
+    return <Loading />;
   }
 
   return (
