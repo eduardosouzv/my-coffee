@@ -1,4 +1,6 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
+
+import { useHistory } from 'react-router-dom';
 
 import close from '../../assets/icons/close.svg';
 
@@ -17,90 +19,23 @@ import { ItemComponent } from './ItemComponent';
 import { CartContext } from '../../contexts/CartContext';
 import { AuthContext } from '../../contexts/AuthContext';
 
-interface ICart {
-  id: number;
-  title: string;
-  description: string;
-  imgPath: string;
-  price: number;
-  quantity: number;
-}
-
 export const CartModal: React.FC = () => {
-  const { setIsCartModalOpen } = useContext(CartContext);
+  const history = useHistory();
+
+  const { setIsCartModalOpen, localStorageCart, addOneProduct, balance } =
+    useContext(CartContext);
   const { isLogged, setIsLoginModalOpen } = useContext(AuthContext);
-
-  const [balance, setBalance] = useState<string>(() => {
-    const cartJSON = localStorage.getItem('cart');
-
-    if (cartJSON) {
-      const cart: ICart[] = JSON.parse(cartJSON);
-
-      let currentBalance = 0;
-
-      cart.map(item => (currentBalance += item.quantity * item.price));
-      return currentBalance.toFixed(2);
-    }
-
-    return '0.00';
-  });
-  const [localStorageCart, setLocalStorageCart] = useState<ICart[]>(() => {
-    const cartJSON = localStorage.getItem('cart');
-
-    if (cartJSON) {
-      return JSON.parse(cartJSON);
-    }
-
-    return [];
-  });
-
-  function refreshBalance(cart: ICart[]) {
-    let currentBalance = 0;
-
-    cart.map(item => (currentBalance += item.quantity * item.price));
-
-    setBalance(currentBalance.toFixed(2));
-  }
-
-  function addOneProduct(id: number, type: 'add' | 'remove'): void {
-    const index = localStorageCart.findIndex(storageItem => storageItem.id === id);
-    let newCart = localStorageCart;
-
-    if (type === 'add') {
-      let newItem = {
-        ...localStorageCart[index],
-        quantity: localStorageCart[index].quantity + 1,
-      };
-      newCart[index] = newItem;
-    } else {
-      if (localStorageCart[index].quantity === 1) {
-        newCart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify([...newCart]));
-        refreshBalance([...newCart]);
-        setLocalStorageCart([...newCart]);
-        return;
-      }
-
-      let newItem = {
-        ...localStorageCart[index],
-        quantity: localStorageCart[index].quantity - 1,
-      };
-      newCart[index] = newItem;
-    }
-
-    localStorage.setItem('cart', JSON.stringify([...newCart]));
-    refreshBalance([...newCart]);
-    setLocalStorageCart([...newCart]);
-  }
 
   function handleCheckout() {
     if (isLogged) {
-      // go to checkout
+      history.push('/checkout');
       return;
     }
     setIsCartModalOpen(false);
     setIsLoginModalOpen(true);
   }
+
+  console.log(localStorageCart);
 
   return (
     <>
