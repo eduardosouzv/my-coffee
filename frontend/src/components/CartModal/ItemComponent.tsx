@@ -28,10 +28,10 @@ export const ItemComponent: React.FC<Props> = ({
             <strong>Quantity:</strong> {quantity}
           </p>
           <ActionButton onClick={addFunction}>
-            <img src={add} />
+            <img src={add} alt={title} />
           </ActionButton>
           <ActionButton onClick={removeFunction}>
-            <img src={remove} />
+            <img src={remove} alt={title} />
           </ActionButton>
         </End>
       </Item>
