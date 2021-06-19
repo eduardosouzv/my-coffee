@@ -3,26 +3,16 @@ import React, { useContext } from 'react';
 import { TopBar } from '../../components/TopBar';
 import { NavMenu } from '../../components/NavMenu';
 import { Item } from '../../components/Item';
-import { RegisterModal } from '../../components/RegisterModal';
-import { LoginModal } from '../../components/LoginModal';
-import { CartModal } from '../../components/CartModal';
 
 import { List } from './styles';
 
-import { AuthContext } from '../../contexts/AuthContext';
 import { ProductsContext } from '../../contexts/ProductsContext';
-import { CartContext } from '../../contexts/CartContext';
 
 const Menu: React.FC = () => {
-  const { isLoginModalOpen, isRegisterModalOpen } = useContext(AuthContext);
   const { products } = useContext(ProductsContext);
-  const { isCartModalOpen } = useContext(CartContext);
 
   return (
     <>
-      {isCartModalOpen ? <CartModal /> : null}
-      {isLoginModalOpen ? <LoginModal /> : null}
-      {isRegisterModalOpen ? <RegisterModal /> : null}
       <TopBar />
       <NavMenu />
       <List>

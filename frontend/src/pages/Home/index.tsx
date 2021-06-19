@@ -12,12 +12,8 @@ import gif from '../../assets/coffee.gif';
 import { Text, Button, Aligned } from './styles';
 
 const Home: React.FC = () => {
-  const { isLoginModalOpen, isRegisterModalOpen } = useContext(AuthContext);
-
   return (
     <div>
-      {isLoginModalOpen ? <LoginModal /> : null}
-      {isRegisterModalOpen ? <RegisterModal /> : null}
       <TopBar />
       <Text>From coffee lovers to coffee lovers...</Text>
       <Aligned>
