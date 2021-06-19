@@ -17,8 +17,8 @@ const App: React.FC = () => {
 
   return (
     <>
-      <ModalHandler />
       <BrowserRouter>
+        <ModalHandler />
         <Routes />
       </BrowserRouter>
       <GlobalStyle />
