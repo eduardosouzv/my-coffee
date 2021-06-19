@@ -29,6 +29,7 @@ export const CartModal: React.FC = () => {
   function handleCheckout() {
     if (isLogged) {
       history.push('/checkout');
+      setIsCartModalOpen(false);
       return;
     }
     setIsCartModalOpen(false);
