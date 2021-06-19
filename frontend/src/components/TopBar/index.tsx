@@ -22,6 +22,7 @@ export const TopBar: React.FC = () => {
         <Cart
           onClick={() => {
             setIsCartModalOpen(true);
+            console.log('open cart');
           }}
         >
           <img src={cartIcon} alt="" />

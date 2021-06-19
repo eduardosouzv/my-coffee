@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { ModalHandler } from './components/ModalHandler';
+
 import { AuthContext } from './contexts/AuthContext';
 
 import Routes from './routes';
@@ -15,6 +17,7 @@ const App: React.FC = () => {
 
   return (
     <>
+      <ModalHandler />
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
