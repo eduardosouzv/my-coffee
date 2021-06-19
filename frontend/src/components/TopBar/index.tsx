@@ -1,16 +1,37 @@
 import React, { useContext } from 'react';
-
-import { Title, Header, Logo, Cart } from './styles';
+import { useHistory } from 'react-router';
 
 import icon from '../../assets/coffee.svg';
-
 import cartIcon from '../../assets/icons/cart.svg';
+
+import { Title, Header, Logo, OpenCartButton } from './styles';
+
 import { AuthContext } from '../../contexts/AuthContext';
 import { CartContext } from '../../contexts/CartContext';
 
-export const TopBar: React.FC = () => {
+interface Props {
+  hiddenCartButton?: boolean;
+  hiddenLoginButton?: boolean;
+  hiddenReturnButton?: boolean;
+}
+
+export const TopBar: React.FC<Props> = ({
+  hiddenCartButton,
+  hiddenLoginButton,
+  hiddenReturnButton,
+}) => {
+  const history = useHistory();
+
   const { setIsLoginModalOpen, logout, isLogged } = useContext(AuthContext);
   const { setIsCartModalOpen } = useContext(CartContext);
+
+  function handleReturn() {
+    if (isLogged) {
+      history.push('/menu');
+      return;
+    }
+  }
+
   return (
     <Header>
       <Logo>
@@ -19,31 +40,43 @@ export const TopBar: React.FC = () => {
       </Logo>
 
       <div>
-        <Cart
-          onClick={() => {
-            setIsCartModalOpen(true);
-            console.log('open cart');
-          }}
-        >
-          <img src={cartIcon} alt="" />
-        </Cart>
-        {isLogged ? (
-          <>
-            <button
-              onClick={() => {
-                logout();
-              }}
-            >
-              Logout
-            </button>
-          </>
-        ) : (
-          <button
+        {!hiddenCartButton && (
+          <OpenCartButton
             onClick={() => {
-              setIsLoginModalOpen(true);
+              setIsCartModalOpen(true);
             }}
           >
-            Login
+            <img src={cartIcon} alt="" />
+          </OpenCartButton>
+        )}
+        {!hiddenLoginButton &&
+          (isLogged ? (
+            <>
+              <button
+                onClick={() => {
+                  logout();
+                }}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={() => {
+                setIsLoginModalOpen(true);
+              }}
+            >
+              Login
+            </button>
+          ))}
+
+        {!hiddenReturnButton && (
+          <button
+            onClick={() => {
+              handleReturn();
+            }}
+          >
+            Return
           </button>
         )}
       </div>

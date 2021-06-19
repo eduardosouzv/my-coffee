@@ -13,7 +13,7 @@ const Menu: React.FC = () => {
 
   return (
     <>
-      <TopBar />
+      <TopBar hiddenReturnButton />
       <NavMenu />
       <List>
         {products.map(product => {

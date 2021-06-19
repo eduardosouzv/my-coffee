@@ -12,7 +12,7 @@ const Checkout: React.FC = () => {
 
   return (
     <>
-      <TopBar />
+      <TopBar hiddenLoginButton hiddenCartButton />
       {localStorageCart.length ? (
         <>
           <CartTitle>Your cart</CartTitle>

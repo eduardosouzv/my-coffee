@@ -56,7 +56,7 @@ export const Logo = styled.div`
   align-items: center;
 `;
 
-export const Cart = styled.button`
+export const OpenCartButton = styled.button`
   cursor: pointer;
 
   border: none;
