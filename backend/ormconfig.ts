@@ -1,13 +1,11 @@
-import { DB_USER } from './constants';
-
 export default {
   type: 'postgres',
-  host: 'localhost',
+  host: 'db',
   port: 5432,
-  username: DB_USER.user,
-  password: DB_USER.password,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   database: 'mycoffee',
-  entities: [__dirname + '/src/models/*.ts'],
+  entities: ['./src/models/*.ts'],
   migrations: ['./src/database/migrations/*.ts'],
   cli: {
     migrationsDir: './src/database/migrations',
