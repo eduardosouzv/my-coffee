@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: db_postgres
+    image: postgres
+    ports:
+      - '5432:5432'
+    restart: always
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: mycoffee
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    depends_on:
+      - 'db'
+    command: npm start
+    ports:
+      - '3000:3000'
+  backend:
+    container_name: backend
+    build: ./backend
+    depends_on:
+      - db
+    command: npm run dev
+    ports:
+      - '3333:3333'
+    volumes:
+      - ./backend:/home/app
