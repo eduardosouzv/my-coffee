@@ -9,8 +9,6 @@
   <h3 align="center">Buy a coffee just for fun !</h3>
 
   <p align="center">
-    <a href="#">View Demo</a>
-    ·
     <a href="https://github.com/eduardosouzv/my-coffee/issues">Report Bug</a>
     ·
     <a href="https://github.com/eduardosouzv/my-coffee/issues">Request Feature</a>
@@ -21,7 +19,7 @@
   <summary>Summary</summary>
   <ol>
     <li><a href="#about-the-project">About The Project</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#getting-started">Installation</a></li>
   </ol>
 </details>
 
@@ -34,13 +32,25 @@ That is an side-project made to just practice and learn more about technologies 
 - [ReactJS](https://reactjs.org)
 - [Typescript](https://www.typescriptlang.org)
 - [NodeJS](https://nodejs.org)
+- [Docker](https://www.docker.com)
+- [PostgreSQL](https://www.postgresql.org)
 
-## 🌳 Getting Started
+## 🌳 Installation
 
-### Installation
+### Running application with docker-compose
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/eduardosouzv/my-coffee.git
+   $ git clone https://github.com/eduardosouzv/my-coffee.git
    ```
-   <!-- complete it here -->
+2. To configure environment variables, create a file called `.env` in `backend` like `.env.example` (you can basically copy and paste)
+
+3. Run the app with docker-compose
+   ```sh
+   $ docker-compose up -d
+   ```
+4. Access the app in your browser in `localhost:3000`
+5. If you want to stop it
+   ```sh
+   $ docker-compose down
+   ```
